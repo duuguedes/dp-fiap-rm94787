@@ -29,7 +29,7 @@ Antes de começar, você precisará ter instalado em sua máquina:
 Para clonar o repositório, execute o seguinte comando no terminal:
 
 ```
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/duuguedes/dp-fiap-rm94787.git
 ```
 
 Substitua seu-usuario e nome-do-repositorio pelo seu nome de usuário do GitHub e o nome do repositório.
@@ -39,7 +39,7 @@ Substitua seu-usuario e nome-do-repositorio pelo seu nome de usuário do GitHub 
 Navegue até o diretório do projeto e instale as dependências:
 
 ```
-cd nome-do-repositorio
+cd dp-fiap-rm94787
 npm install
 ```
 
