@@ -30,16 +30,16 @@ export default function SignIn() {
 
     // Validação do RM
     if (!form.username.trim()) {
-      newErrors.username = 'RM é obrigatório'
+      newErrors.username = 'RM is required'
       isValid = false
     }
 
     // Validação da Senha
     if (!form.password) {
-      newErrors.password = 'Senha é obrigatória'
+      newErrors.password = 'Password is required'
       isValid = false
     } else if (form.password.length < 6) {
-      newErrors.password = 'Senha deve ter pelo menos 6 caracteres'
+      newErrors.password = 'Password must be at least 6 characters'
       isValid = false
     }
 
