@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema de Gerenciamento de Usuários
 
-## Getting Started
+## Índice
 
-First, run the development server:
+1. [Introdução](#introdução)
+2. [Pré-requisitos](#pré-requisitos)
+3. [Clonando o Repositório](#clonando-o-repositório)
+4. [Instalando Dependências](#instalando-dependências)
+5. [Rodando o Projeto](#rodando-o-projeto)
+6. [Estrutura do Projeto](#estrutura-do-projeto)
+7. [Front-end](#front-end)
+8. [Back-end](#back-end)
+9. [Persistência de Dados](#persistência-de-dados)
+10. [Conclusão](#conclusão)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Introdução
+
+Esta aplicação é um sistema de gerenciamento de usuários, permitindo a criação, edição, exclusão e visualização de usuários. O front-end é construído com Next.js e o back-end utiliza um sistema de rotas para gerenciar as operações de CRUD.
+
+## Pré-requisitos
+
+Antes de começar, você precisará ter instalado em sua máquina:
+
+- Node.js (versão 14 ou superior)
+- npm ou yarn
+
+## Clonando o Repositório
+
+Para clonar o repositório, execute o seguinte comando no terminal:
+
+```
+git clone https://github.com/seu-usuario/nome-do-repositorio.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Substitua seu-usuario e nome-do-repositorio pelo seu nome de usuário do GitHub e o nome do repositório.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Instalando Dependências
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Navegue até o diretório do projeto e instale as dependências:
 
-## Learn More
+```
+cd nome-do-repositorio
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+```
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O projeto estará disponível em http://localhost:3000.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estrutura do projeto
 
-## Deploy on Vercel
+```
+src/
+├── app/
+│   ├── (dashboard)/
+│   │   ├── user-management/
+│   │   │   ├── _components/
+│   │   │   │   ├── user-management-table.tsx
+│   │   │   │   └── user-management-edit-modal.tsx
+│   │   │   ├── [id]/
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   ├── api/
+│   │   ├── sign-in/
+│   │   │   └── route.tsx
+│   │   ├── user/
+│   │   │   ├── [id]/
+│   │   │   │   └── route.tsx
+│   │   │   └── route.ts
+│   └── types/
+│       └── user.ts
+└── utils/
+    └── db.json
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Front-end
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Páginas
+
+A aplicação possui uma página principal de gerenciamento de usuários, localizada em `src/app/(dashboard)/user-management/page.tsx`. Esta página faz uma requisição para a API para buscar a lista de usuários e exibi-los em uma tabela.
+
+### Componentes
+
+- **UserManagementTable**: Componente responsável por exibir a tabela de usuários.
+- **UserManagementEditModal**: Modal para editar as informações de um usuário.
+
+## Back-end
+
+### Rotas
+
+A aplicação possui as seguintes rotas para gerenciar usuários:
+
+- `GET /api/user`: Retorna a lista de todos os usuários.
+- `POST /api/user`: Cria um novo usuário.
+- `GET /api/user/[id]`: Retorna um usuário específico pelo ID.
+- `PUT /api/user/[id]`: Atualiza as informações de um usuário específico pelo ID.
+- `DELETE /api/user/[id]`: Remove um usuário específico pelo ID.
+- `POST /api/sign-in`: Realiza o login de um usuário.
+
+## Persistência de Dados
+
+Os dados dos usuários são armazenados em um arquivo JSON localizado em `src/utils/db.json`. As operações de CRUD são realizadas diretamente neste arquivo, utilizando o módulo `fs` do Node.js para ler e escrever os dados.
+
+### Exemplo de Estrutura do db.json
+
+```
+{
+  "users": [
+    {
+      "id": "Kp284mNLPX",
+      "name": "Pedro Oliveira",
+      "password": "senha789",
+      "rm": "67890",
+      "cpf": "456.789.123-00",
+      "rg": "45.678.912-3",
+      "profession": "Analista",
+      "image": "uploads/default.png"
+    }
+  ]
+}
+```
